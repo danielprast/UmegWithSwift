@@ -2,14 +2,38 @@ import XCTest
 @testable import DataStructures
 
 final class DataStructuresTests: XCTestCase {
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct
-        // results.
-        XCTAssertEqual(DataStructures().text, "Hello, World!")
+    var stack = Stack<Int>()
+    
+    override func setUp() {
+        stack.push(1)
+        stack.push(2)
+        stack.push(3)
+        stack.push(4)
     }
 
-    static var allTests = [
-        ("testExample", testExample),
-    ]
+    func test_push() {
+        XCTAssertEqual(stack.description, "1 2 3 4")
+    }
+    
+    func test_pop() {
+        XCTAssertEqual(stack.pop(), 4)
+    }
+    
+    func test_peek() {
+        XCTAssertEqual(stack.peek(), 4)
+    }
+    
+    func test_isEmpty() {
+        XCTAssertFalse(stack.isEmpty)
+    }
+    
+    func test_initWithArray() {
+        let array = [1, 2, 3, 4]
+        XCTAssertEqual(stack, Stack(array))
+    }
+    
+    func test_arrayLiteral() {
+        let stack: Stack = ["siji", "loro", "telu"]
+        XCTAssertEqual(stack, ["siji", "loro", "telu"])
+    }
 }
