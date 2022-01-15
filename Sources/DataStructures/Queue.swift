@@ -35,4 +35,28 @@ struct QueueArray<T>: Queue {
     }
 }
 
-
+struct QueueStack<T>: Queue {
+    private var dequeueStack: [T] = []
+    private var enqueueStack: [T] = []
+    
+    var isEmpty: Bool {
+        return dequeueStack.isEmpty && enqueueStack.isEmpty
+    }
+    
+    var peek: T? {
+        return !dequeueStack.isEmpty ? dequeueStack.last : enqueueStack.first
+    }
+    
+    mutating func enqueue(_ element: T) {
+        enqueueStack.append(element)
+    }
+    
+    @discardableResult
+    mutating func dequeue() -> T? {
+        if dequeueStack.isEmpty {
+            dequeueStack = enqueueStack.reversed()
+            enqueueStack.removeAll()
+        }
+        return dequeueStack.popLast()
+    }
+}
