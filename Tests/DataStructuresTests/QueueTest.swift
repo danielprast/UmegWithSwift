@@ -49,5 +49,30 @@ class QueueTest: XCTestCase {
         queueStack.dequeue()
         XCTAssertTrue(queueStack.isEmpty)
     }
+    
+    func test_keepTrackNextPlayerReturnApple() {
+        let nextPlayer = queueStack.nextPlayer()
+        XCTAssertEqual(nextPlayer, "Apple")
+    }
+    
+    func test_nextPlayerReturnXiaomi() {
+        queueStack.dequeue()
+        XCTAssertEqual(queueStack.nextPlayer(), "Xiaomi")
+    }
+    
+    func test_nextPlayerReturnNokia() {
+        queueStack.dequeue()
+        queueStack.dequeue()
+        XCTAssertEqual(queueStack.nextPlayer(), "Nokia")
+    }
+    
+    func test_nextPlayerReturnsNil() {
+        queueStack.dequeue()
+        queueStack.dequeue()
+        queueStack.dequeue()        
+        XCTAssertNil(queueStack.nextPlayer())
+    }
 
 }
+
+

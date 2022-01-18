@@ -43,6 +43,10 @@ struct QueueStack<T>: Queue {
         return dequeueStack.isEmpty && enqueueStack.isEmpty
     }
     
+    var count: Int {
+        return dequeueStack.count + enqueueStack.count
+    }
+    
     var peek: T? {
         return !dequeueStack.isEmpty ? dequeueStack.last : enqueueStack.first
     }
@@ -58,5 +62,46 @@ struct QueueStack<T>: Queue {
             enqueueStack.removeAll()
         }
         return dequeueStack.popLast()
+    }
+}
+
+protocol BoardGameManager {
+    associatedtype Player
+    mutating func nextPlayer() -> Player?
+}
+
+// MARK: - Challenge: Track next player
+// MARK: My Solution
+//extension QueueStack: BoardGameManager {
+//    typealias Player = T
+//
+//    mutating func nextPlayer() -> Player? {
+//        if isEmpty {
+//            return nil
+//        }
+//
+//        guard let veryPeek = self.peek else { return nil }
+//        dequeue()
+//
+//        guard let nextPlayer = self.peek else { return nil }
+//        enqueue(veryPeek)
+//        self.enqueueStack.append(contentsOf: dequeueStack.reversed())
+//        dequeueStack.removeAll()
+//
+//        return nextPlayer
+//    }
+//}
+
+// MARK: Correct Solution
+extension QueueStack: BoardGameManager {
+    typealias Player = T
+    
+    @discardableResult
+    mutating func nextPlayer() -> T? {
+        guard let player = dequeue() else {
+            return nil
+        }
+        enqueue(player)
+        return player
     }
 }
