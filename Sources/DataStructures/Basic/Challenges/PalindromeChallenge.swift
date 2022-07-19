@@ -12,7 +12,7 @@ import Foundation
 struct PalindromeChallenge {
   
   static func solve(isPalindrome string: String) -> Bool {
-    return isPalindromeCutHalfLoop(string)
+    return isPalindromeRecursive(string, startAt: 0)
   }
   
   static func isPalindromeRegularApproach(_ string: String) -> Bool {
@@ -53,6 +53,26 @@ struct PalindromeChallenge {
         return false
       }
     }
+    return true
+  }
+  
+  static func isPalindromeRecursive(
+    _ string: String,
+    startAt i: Int
+  ) -> Bool {
+    if i < string.count / 2 {
+      print("iteration -> \(i)")
+      
+      let firstStringIndex = i
+      let lastStringIndex = string.count - i - 1
+      
+      if string[firstStringIndex] != string[lastStringIndex] {
+        return false
+      }
+      
+      return isPalindromeRecursive(string, startAt: i + 1)
+    }
+    
     return true
   }
   

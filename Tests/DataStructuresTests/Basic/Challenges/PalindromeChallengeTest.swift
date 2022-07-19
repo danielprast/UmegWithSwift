@@ -10,41 +10,7 @@ import XCTest
 
 final class PalindromeChallengeTest: XCTestCase {
   
-  func test_solvePalindromeTrue() {
-    XCTAssertEqual(
-      PalindromeChallenge.solve(isPalindrome: "kodok"),
-      true
-    )
-    XCTAssertEqual(
-      PalindromeChallenge.solve(isPalindrome: "aba"),
-      true
-    )
-    XCTAssertEqual(
-      PalindromeChallenge.solve(isPalindrome: "a"),
-      true
-    )
-    XCTAssertEqual(
-      PalindromeChallenge.solve(isPalindrome: ""),
-      true
-    )
-  }
-  
-  func test_solvePalindromeFalse() {
-    XCTAssertEqual(
-      PalindromeChallenge.solve(isPalindrome: "rokok"),
-      false
-    )
-    XCTAssertEqual(
-      PalindromeChallenge.solve(isPalindrome: "kodcok"),
-      false
-    )
-    XCTAssertEqual(
-      PalindromeChallenge.solve(isPalindrome: "ab"),
-      false
-    )
-  }
-  
-  func test_isPalindrome2() {
+  func test_isPalindrome() {
     // true
     XCTAssertEqual(
       PalindromeChallenge.solve(isPalindrome: "kodok"),
