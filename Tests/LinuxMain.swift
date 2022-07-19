@@ -1,6 +1,6 @@
 import XCTest
 
-import DataStructuresTests
+import UmegWithSwiftTests
 
 var tests = [XCTestCaseEntry]()
 tests += DataStructuresTests.allTests()

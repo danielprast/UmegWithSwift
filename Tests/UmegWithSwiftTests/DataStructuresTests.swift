@@ -1,5 +1,5 @@
 import XCTest
-@testable import DataStructures
+@testable import UmegWithSwift
 
 final class DataStructuresTests: XCTestCase {
     var stack = Stack<Int>()

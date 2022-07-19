@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import DataStructures
+@testable import UmegWithSwift
 
 final class PalindromeChallengeTest: XCTestCase {
   
