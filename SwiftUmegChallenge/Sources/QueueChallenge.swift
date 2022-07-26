@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import UmegWithSwift
+@testable import SwiftDataStructure
 
 class QueueChallenge: XCTestCase {
     func test_playerOrder() {

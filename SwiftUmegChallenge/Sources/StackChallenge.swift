@@ -11,12 +11,12 @@ import SwiftDataStructure
 import SwiftUmegHelper
 
 
-final class StackChallenge {
+final public class StackChallenge {
   
   /// Challenge:
   /// Write a function to check for balanced parentheses in a given strings.
   
-  static func correctSolution(_ string: String) -> Bool {
+  public static func correctSolution(_ string: String) -> Bool {
     var stack = Stack<Character>()
     
     for character in string {
@@ -34,7 +34,7 @@ final class StackChallenge {
     return stack.isEmpty
   }
   
-  static func checkParentheses2(_ string: String) -> Bool {
+  public static func checkParentheses2(_ string: String) -> Bool {
     if string.isEmpty { return false }
     
     var stack = Stack<Character>()
@@ -57,7 +57,7 @@ final class StackChallenge {
   
   //MARK: - Wrong Solution
   
-  static func checkParentheses1(_ string: String) -> Bool {
+  public static func checkParentheses1(_ string: String) -> Bool {
     if string.isEmpty { return false }
     
     let leftParen = "("
@@ -84,7 +84,7 @@ final class StackChallenge {
     return leftParenCount == rightParenCount
   }
   
-  static func checkParenthesesWithoutStack(_ string: String) -> Bool {
+  public static func checkParenthesesWithoutStack(_ string: String) -> Bool {
     if string.isEmpty { return false }
     
     let leftParen = "("
@@ -109,7 +109,7 @@ final class StackChallenge {
   }
   
   //MARK: - Other case, example input = "{}[]()[]{}"
-  static func checkDynamicParentheses(_ string: String) -> Bool {
+  public static func checkDynamicParentheses(_ string: String) -> Bool {
     if string.isEmpty { return false }
     
     let chars: [Character] = string.map { $0 }
@@ -130,7 +130,7 @@ final class StackChallenge {
   
   // MARK: -  Reverse An Array
   /// Create a function that uses a stack to print the contents of an array in reversed order.
-  static func reverseAnArray(fromString string: String) -> String {
+  public static func reverseAnArray(fromString string: String) -> String {
     var resultStack: Stack<String> = Stack([String]())
     for (i,v) in string.enumerated().reversed() {
       print("index -> \(i)")
