@@ -1,8 +1,14 @@
-struct Stack<Element: Equatable>: Equatable {
+//
+//  Stack.swift
+//  Created by Daniel Prastiwa on 07/01/22.
+//
+
+
+public struct Stack<Element: Equatable>: Equatable {
   
-  private(set) var storage: [Element] = []
+  private(set) public var storage: [Element] = []
   
-  var isEmpty: Bool {
+  public var isEmpty: Bool {
     return peek() == nil
   }
   
@@ -12,16 +18,16 @@ struct Stack<Element: Equatable>: Equatable {
     storage = elements
   }
   
-  func peek() -> Element? {
+  public func peek() -> Element? {
     return storage.last
   }
   
-  mutating func push(_ element: Element) {
+  public mutating func push(_ element: Element) {
     storage.append(element)
   }
   
   @discardableResult
-  mutating func pop() -> Element? {
+  public mutating func pop() -> Element? {
     return storage.popLast()
   }
   
@@ -30,7 +36,7 @@ struct Stack<Element: Equatable>: Equatable {
 
 extension Stack: CustomStringConvertible {
   
-  var description: String {
+  public var description: String {
     return storage
       .map { "\($0)" }
       .joined(separator: " ")

@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import UmegWithSwift
+@testable import SwiftUmegChallenge
 
 final class PalindromeChallengeTest: XCTestCase {
   

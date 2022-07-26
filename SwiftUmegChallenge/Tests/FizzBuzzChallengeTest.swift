@@ -4,7 +4,7 @@
 //
 
 import XCTest
-@testable import UmegWithSwift
+@testable import SwiftUmegChallenge
 
 class FizzBuzzChallengeTest: XCTestCase {
   

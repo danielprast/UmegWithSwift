@@ -5,6 +5,8 @@
 
 
 import Foundation
+import SwiftDataStructure
+import SwiftUmegHelper
 
 
 public struct FizzBuzzChallenge {

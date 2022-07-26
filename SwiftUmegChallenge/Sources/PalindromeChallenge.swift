@@ -7,6 +7,8 @@
 
 
 import Foundation
+import SwiftDataStructure
+import SwiftUmegHelper
 
 
 struct PalindromeChallenge {

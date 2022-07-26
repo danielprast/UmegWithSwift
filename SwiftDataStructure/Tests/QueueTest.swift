@@ -1,12 +1,10 @@
 //
 //  QueueTest.swift
-//  
-//
 //  Created by Daniel Prastiwa on 07/01/22.
 //
 
 import XCTest
-@testable import UmegWithSwift
+@testable import SwiftDataStructure
 
 class QueueTest: XCTestCase {
     var queueArray = QueueArray<String>()

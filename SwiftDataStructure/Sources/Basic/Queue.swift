@@ -1,13 +1,13 @@
 //
 //  Queue.swift
-//  
-//
 //  Created by Daniel Prastiwa on 07/01/22.
 //
 
+
 import Foundation
 
-protocol Queue {
+
+public protocol Queue {
   associatedtype Element
   
   mutating func enqueue(_ element: Element)
@@ -18,49 +18,57 @@ protocol Queue {
 
 // MARK: - QueueArray
 
-struct QueueArray<T>: Queue {
+public struct QueueArray<T>: Queue {
+  
+  public init() {}
+  
   private var array: [T] = []
-  var isEmpty: Bool {
+  
+  public var isEmpty: Bool {
     return array.isEmpty
   }
-  var peek: T? {
+  
+  public var peek: T? {
     return array.first
   }
   
-  mutating func enqueue(_ element: T) {
+  public mutating func enqueue(_ element: T) {
     array.append(element)
   }
   
   @discardableResult
-  mutating func dequeue() -> T? {
+  public mutating func dequeue() -> T? {
     return isEmpty ? nil : array.removeFirst()
   }
 }
 
 // MARK: - QueueStack
 
-struct QueueStack<T>: Queue {
+public struct QueueStack<T>: Queue {
+  
+  public init() {}
+  
   private var dequeueStack: [T] = []
   private var enqueueStack: [T] = []
   
-  var isEmpty: Bool {
+  public var isEmpty: Bool {
     return dequeueStack.isEmpty && enqueueStack.isEmpty
   }
   
-  var count: Int {
+  public var count: Int {
     return dequeueStack.count + enqueueStack.count
   }
   
-  var peek: T? {
+  public var peek: T? {
     return !dequeueStack.isEmpty ? dequeueStack.last : enqueueStack.first
   }
   
-  mutating func enqueue(_ element: T) {
+  public mutating func enqueue(_ element: T) {
     enqueueStack.append(element)
   }
   
   @discardableResult
-  mutating func dequeue() -> T? {
+  public mutating func dequeue() -> T? {
     if dequeueStack.isEmpty {
       dequeueStack = enqueueStack.reversed()
       enqueueStack.removeAll()
@@ -69,10 +77,12 @@ struct QueueStack<T>: Queue {
   }
 }
 
+
 protocol BoardGameManager {
   associatedtype Player
   mutating func nextPlayer() -> Player?
 }
+
 
 // MARK: - Challenge: Track next player
 // MARK: My Solution
@@ -101,7 +111,7 @@ extension QueueStack: BoardGameManager {
   typealias Player = T
   
   @discardableResult
-  mutating func nextPlayer() -> T? {
+  public mutating func nextPlayer() -> T? {
     guard let player = dequeue() else {
       return nil
     }
