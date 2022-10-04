@@ -112,10 +112,9 @@ extension QueueStack: BoardGameManager {
   
   @discardableResult
   public mutating func nextPlayer() -> T? {
-    guard let player = dequeue() else {
+    guard let _ = dequeue() else {
       return nil
     }
-    enqueue(player)
-    return player
+    return peek
   }
 }
