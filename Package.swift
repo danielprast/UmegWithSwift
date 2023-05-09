@@ -1,4 +1,4 @@
-// swift-tools-version:5.3
+// swift-tools-version:5.7
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -6,10 +6,13 @@ import PackageDescription
 let package = Package(
   name: "UmegWithSwift",
   platforms: [
-    .macOS(.v10_12),
-    .iOS(.v11)
+    .macOS(.v11)
   ],
   products: [
+    .executable(
+      name: "AppSwift",
+      targets: ["AppSwift"]
+    ),
     .library(
       name: "SwiftDataStructure",
       targets: ["SwiftDataStructure"]
@@ -27,8 +30,17 @@ let package = Package(
       targets: ["SwiftUmegHelper"]
     )
   ],
-  dependencies: [],
+  dependencies: [
+    .package(url: "https://github.com/apple/swift-package-manager.git", exact: "0.6.0")
+  ],
   targets: [
+    .executableTarget(
+      name: "AppSwift",
+      dependencies: [
+        "SwiftUmegHelper"
+      ],
+      path: "AppSwift/Sources"
+    ),
     .target(
       name: "SwiftDataStructure",
       dependencies: ["SwiftUmegHelper"],
@@ -55,6 +67,11 @@ let package = Package(
       name: "SwiftUmegHelper",
       dependencies: [],
       path: "SwiftUmegHelper/Sources"
+    ),
+    .testTarget(
+      name: "AppSwiftTests",
+      dependencies: ["AppSwift"],
+      path: "AppSwift/Tests"
     ),
     .testTarget(
       name: "SwiftDataStructureTests",
