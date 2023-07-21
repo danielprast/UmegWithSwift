@@ -14,4 +14,14 @@ class PrimeNumberTest: XCTestCase {
     XCTAssertEqual(sut.makeSumOfPrimeNumbers(ofTotalNumber: 25), 100)
   }
   
+  func test_primeNumberFor29IsTrue() {
+    let sut: PrimeNumberValidation = PrimeNumberV1()
+    XCTAssertTrue(sut.isPrime(29))
+  }
+  
+  func test_primeNumberFor25IsFalse() {
+    let sut: PrimeNumberValidation = PrimeNumberV1()
+    XCTAssertFalse(sut.isPrime(25))
+  }
+  
 }

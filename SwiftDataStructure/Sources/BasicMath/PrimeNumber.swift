@@ -11,6 +11,10 @@ protocol PrimeNumber {
   func makeSumOfPrimeNumbers(ofTotalNumber totalNumber: Int) -> Int
 }
 
+protocol PrimeNumberValidation {
+  func isPrime(_ number: Int) -> Bool
+}
+
 class PrimeNumberV1: PrimeNumber {
   
   func makeSumOfPrimeNumbers(ofTotalNumber totalNumber: Int) -> Int {
@@ -42,4 +46,32 @@ class PrimeNumberV1: PrimeNumber {
       partialResult + num
     }
   }
+  
+  func isNumberDivisible(_ number: Int, by divisor: Int) -> Bool {
+    number % divisor == 0
+  }
+  
+  func isPrime(_ number: Int) -> Bool {
+    if number < 0 {
+      return false
+    }
+    
+    if number <= 3 {
+      return true
+    }
+    
+    let doubleNumber = Double(number)
+    let root = Int(doubleNumber.squareRoot())
+    
+    for divisor in 2...root {
+      if isNumberDivisible(number, by: divisor) {
+        return false
+      }
+    }
+    return true
+  }
+  
 }
+
+
+extension PrimeNumberV1: PrimeNumberValidation {}
