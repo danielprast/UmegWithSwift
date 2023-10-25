@@ -1,7 +1,5 @@
 //
-//  StringExtension.swift
-//  
-//
+//  String+Extension.swift
 //  Created by Daniel Prastiwa on 19/07/22.
 //
 

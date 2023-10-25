@@ -37,6 +37,8 @@ let package = Package(
     .executableTarget(
       name: "AppSwift",
       dependencies: [
+        "SwiftAlgorithm",
+        "SwiftDataStructure",
         "SwiftUmegHelper"
       ],
       path: "AppSwift/Sources"
